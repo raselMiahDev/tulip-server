@@ -70,7 +70,7 @@ export const login = catchAsync(
  */
 export const getUsers = catchAsync(
     async (_req: Request, res: Response) => {
-        const users = await User.find().select("-password");
+        const users = await User.find().limit(2).lean().select("-password");
 
         res.status(200).json({
             success: true,
